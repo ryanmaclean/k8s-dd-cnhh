@@ -36,10 +36,12 @@ If blank (Azure cloud shell or what-have-you), get the API from https://app.data
 `export DD_APP_KEY=KEY_FROM_DATADOG`
 
 3. Once both have been confirmed, you can then install the agent:
-`helm install datadogagent \
+```bash
+helm install datadogagent \
  --set datadog.apiKey=$DD_API_KEY \
  --set datadog.appKey=$DD_APP_KEY \
- -f k8s-yaml-files/values.yaml datadog/datadog`
+ -f k8s-yaml-files/values.yaml datadog/datadog
+ ```
  
 Things should now be appearing in Datadog, but we'll also want to ensure that weget the kubernetes metrics as well. To do so, open the values.yaml file we used previously, and around line 190, uncomment `env` and add the following on the lnext lines:
 ```yaml
