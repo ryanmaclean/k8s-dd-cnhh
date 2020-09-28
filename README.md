@@ -43,7 +43,7 @@ helm install datadogagent \
  -f k8s-yaml-files/values.yaml datadog/datadog
  ```
  
-Things should now be appearing in Datadog, but we'll also want to ensure that weget the kubernetes metrics as well. To do so, open the values.yaml file we used previously, and around line 190, uncomment `env` and add the following on the lnext lines:
+Things should now be appearing in Datadog, but we'll also want to ensure that we get the kubernetes metrics as well. To do so, open the values.yaml file we used previously, and around line 190, uncomment `env` and add the following on the lnext lines:
 ```yaml
  - name: DD_KUBELET_TLS_VERIFY
    value: "false"
@@ -81,11 +81,3 @@ helm upgrade datadogagent \
 ```
 
 Open the event stream to confirm the problems we'd expect: https://app.datadoghq.com/event/stream
-
-### Health checks
-
-```bash
-kubectl get pod -o json | jq -r '.items[] | .metadata.name + " - IP: " + .status.podIPs[].ip ' 
-```
-
-Open values.yaml once more, this time we'll look around line 200. 
