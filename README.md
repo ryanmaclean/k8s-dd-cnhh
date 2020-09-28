@@ -4,6 +4,8 @@ Some useful commands as we run through the hands-on portion:
 
 ## Helm
 
+### For those in Azure Cloud Shell
+
 Helm chart link: dtdg.co/ddhelm
 
 Make a directory to hold our content (it's used below!):
@@ -15,14 +17,14 @@ Add the repository:
 Download a copy of the values.yaml:
 `wget https://raw.githubusercontent.com/helm/charts/master/stable/datadog/values.yaml && mv values.yaml k8s-yaml-files/`
 
-1. Export the _API_ key, if needed:
+1. Export the _API_ key:
 
 `echo $DD_API_KEY`
 
-If blank (Azure cloud shell or what-have-you), get the API from https://app.datadoghq.com/account/settings#api, and paste it after the `=` sign in the following example:
+If blank (Azure cloud shell or what-have-you), get the API from https://app.datadoghq.com/account/settings#api scroll to the section after API for the APP keys, and paste it after the `=` sign in the following example:
 `export DD_API_KEY=KEY_FROM_DATADOG`
 
-2. Export the _APP_ key, if needed:
+2. Export the _APP_ key:
 
 `echo DD_APP_KEY`
 
