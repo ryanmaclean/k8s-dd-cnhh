@@ -12,7 +12,11 @@ Make a directory to hold our content (it's used below!):
 `mkdir -p k8s-yaml-files`
 
 Add the repository:
-`https://kubernetes-charts.storage.googleapis.com`
+```bash
+helm repo add datadog https://helm.datadoghq.com
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo update
+```
 
 Download a copy of the values.yaml:
 `wget https://raw.githubusercontent.com/helm/charts/master/stable/datadog/values.yaml && mv values.yaml k8s-yaml-files/`
