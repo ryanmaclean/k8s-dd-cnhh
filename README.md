@@ -59,6 +59,10 @@ helm upgrade datadogagent \
  --set datadog.appKey=$DD_APP_KEY \
  -f k8s-yaml-files/values.yaml datadog/datadog
 ```
+We should now see the some of the infrastructure start to come online in Datadog. Note that it may take a couple of minutes, but will eventually look like the following: 
+
+![Datadog Event Stream](aks_in_event_stream.png)
+
 
 ### Let's Break Some Things!
 Edit the values.yaml file once again in your editor. At lines 194 ~ 200, we'll set the CPU to 20 millicores and RAM to 32 mibibytes - much lower than they should be, but will help us see what happeneds when resources are low. 
@@ -84,8 +88,6 @@ helm upgrade datadogagent \
 ```
 
 Open the event stream to confirm the problems we'd expect: https://app.datadoghq.com/event/stream
-
-![Datadog Event Stream](aks_in_event_stream.png)
 
 ### Reverting our Changes! 
 Normally we'd take care of this in the lab by re-provisioning, but for those running their own clusters, feel free to simply re-download the YAML and upgrade via helm once more: 
