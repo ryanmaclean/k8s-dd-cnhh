@@ -130,3 +130,16 @@ Note that though we now have data in Datadog, we also need to configure the inte
 In the "configuration" tab, click "Install Integration" (as pictured below) - we've done the heavy lifting already. 
 ![Datadog Kubernetes Integration](install_k8s_integration.png)
 
+## Deploy Storedog
+We've created a sample app to allow us to look at other Datadog services. 
+
+The manifests for this application can be found in the ![manifests](manifests/) subfolder. 
+
+In order to launch all of the microservices at once, the following command will apply all of the yaml files in that folder:
+
+```bash
+kubectl apply -f storedog/.
+```
+
+### Check Containers in Datadog
+The containers we've just launched should now also be viewable in [Datadog's container view](https://app.datadoghq.com/containers). 
