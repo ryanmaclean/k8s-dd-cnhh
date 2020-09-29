@@ -6,7 +6,7 @@ Some useful commands as we run through the hands-on portion:
 
 ### For those in Azure Cloud Shell
 
-![Helm chart link - dtdg.co/ddhelm](http://dtdg.co/ddhelm)
+[Helm chart link - dtdg.co/ddhelm](http://dtdg.co/ddhelm)
 
 Make a directory to hold our content (it's used below!):
 `mkdir -p k8s-yaml-files`
