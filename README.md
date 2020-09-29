@@ -128,6 +128,10 @@ Note that though we now have data in Datadog, we also need to configure the inte
 In the "configuration" tab, click "Install Integration" (as pictured below) - we've done the heavy lifting already. 
 ![Datadog Kubernetes Integration](install_k8s_integration.png)
 
+Once we have the Kubernetes Integration installed, we can then explore the [Kubernetes default dashboards](https://app.datadoghq.com/screen/integration/86/kubernetes-overview) in Datadog.
+
+![AKS in Datadog](aks_datadog.png)
+
 ## Deploy Storedog
 We've created a sample app to allow us to look at other Datadog services. 
 
@@ -145,9 +149,11 @@ The containers we've just launched should now also be viewable in [Datadog's con
 ### Grab the URL for Storedog
 Back in the Azure portal, you can now get the IP address for our storedog frontend. Note that it's just an IP for now as we're testing, but we can add a DNS record for these when required. 
 
-![storedog IP in Azure Portal](storefog_ip.png)
+![storedog IP in Azure Portal](storedog_ip.png)
 
 ### Check out Storedog
 Storedog, our microservices app, launched in AKS, is now reachable via the IP we grabbed above. We'll check it out for now, but we'll use this in our next section within Datadog. 
+
+![storedog_screenshot](storedog.png)
 
 # END HERE CONTINUE WITH DEMO IN DATADOG
