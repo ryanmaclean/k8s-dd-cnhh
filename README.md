@@ -24,10 +24,12 @@ This outputs your subscriptions as a table, so that you can copy the subscriptio
 
 > Note: If you've only got one subscription and tenant, or if the defaults for both are ok, there's a full example at the end. 
 
-Then add a read-only service principal to that subscription (*replace YOUR_SUBSCRIPTION_ID*), making sure to note the credentials for use with Datadog
+Then add a read-only service principal to that subscription, making sure to note the credentials for use with Datadog
 
 ```bash
-az ad sp create-for-rbac --role "Monitoring Reader" --scopes /subscriptions/YOUR_SUBSCRIPTION_ID
+SUBSCRIPTION_ID=$(az account show --output json | jq -r .id)
+echo $SUBSCRIPTION_ID
+az ad sp create-for-rbac --role "Monitoring Reader" --scopes /subscriptions/$SUBSCRIPTION_ID
 ```
 
 #### Full Example
