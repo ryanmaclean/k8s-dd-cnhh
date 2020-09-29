@@ -1,10 +1,16 @@
 # Monitoring Kubernetes with Datadog / Intro to Datadog for CNHH
 
-Some useful commands as we run through the hands-on portion:
+Some useful commands as we run through the hands-on portion.
 
-## Helm
+## Azure Integration Steps
 
-### For those in Azure Cloud Shell
+### Set Up Service Principal
+
+### Add Service Principal to Datadog
+
+## For Azure Cloud Shell
+
+### Helm
 
 [Helm chart link - dtdg.co/ddhelm](http://dtdg.co/ddhelm)
 
@@ -121,7 +127,7 @@ helm upgrade datadogagent \
  -f k8s-yaml-files/values.yaml datadog/datadog
 ```
 
-### Exploring Kubernetes in Datadog
+## Exploring Kubernetes in Datadog
 
 Note that though we now have data in Datadog, we also need to configure the integration. This can be done via the integrations page, specifically in the Kubernetes integration tab: https://app.datadoghq.com/account/settings#integrations/kubernetes
 
