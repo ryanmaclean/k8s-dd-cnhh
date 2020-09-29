@@ -84,7 +84,8 @@ export DD_API_KEY=KEY_FROM_DATADOG
 
 ##### 2. Export the _APP_ key
 
-Get the API from https://app.datadoghq.com/account/settings#api scroll to the section after API for the APP keys, and paste it after the `=` sign in the following example:
+Get the API from https://app.datadoghq.com/account/settings#api scroll to the section after API for the APP keys.  Enter "cnhh" in the "New application key" field and click "Create Application Key".  Hover over the new key and paste it after the `=` sign in the following example:
+
 ```bash
 export DD_APP_KEY=KEY_FROM_DATADOG
 ```
