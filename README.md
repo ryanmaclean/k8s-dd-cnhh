@@ -65,7 +65,7 @@ We should now see the some of the infrastructure start to come online in Datadog
 
 
 ### Let's Break Some Things!
-Edit the values.yaml file once again in your editor. At lines 194 ~ 200, we'll set the CPU to 20 millicores and RAM to 32 mibibytes - much lower than they should be, but will help us see what happeneds when resources are low. 
+Edit the [`values.yaml`](k8s-yaml-files/values.yaml) file once again in your editor. At lines 796~800, we'll set the CPU to 20 millicores and RAM to 32 mibibytes - much lower than they should be, but will help us see what happeneds when resources are low. 
 
 The resulting section should look like this: 
 
