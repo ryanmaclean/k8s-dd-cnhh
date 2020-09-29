@@ -47,7 +47,7 @@ In Datadog, navigate to the [Azure Integration page](https://app.datadoghq.com/a
 
 ![Datadog Azure Integration](azure_datadog.png)
 
-Enter the Tenant, AppID (Client ID) and Password (Client Secret) you got as output from the previous steps in Azure Cloud Shell. 
+Enter the Tenant, AppID (Client ID) and Password (Client Secret) you got as output from the previous steps in Azure Cloud Shell.  Once entered, click _Install Integration_.
 
 You've now set up Datadog to get Azure data flowing into Datadog for that subscription! If you have more than one, feel free to do this for the rest, but for the purpose of our session, we'll be using the one that contains the AKS cluster that already exists. 
 
