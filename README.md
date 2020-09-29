@@ -8,7 +8,7 @@ Some useful commands as we run through the hands-on portion:
 
 [Helm chart link - dtdg.co/ddhelm](http://dtdg.co/ddhelm)
 
-Clone this repo, the move to that folder:
+Clone this repository, then `cd` to that folder:
 
 ```bash
 git clone https://github.com/ryanmaclean/k8s-dd-cnhh.git
@@ -112,7 +112,7 @@ clusterAgent:
   enabled: true
 ```
 
-Once it's saved, we'll run the familiar upgrade command via helm:
+Once it's saved, we'll run the familiar upgrade command via helm, though note we'll replace this with the `values_full.yaml` version which enables a few more parameters:
 
 ```bash
 helm upgrade datadogagent \
@@ -141,3 +141,13 @@ kubectl apply -f storedog/.
 
 ### Check Containers in Datadog
 The containers we've just launched should now also be viewable in [Datadog's container view](https://app.datadoghq.com/containers). 
+
+### Grab the URL for Storedog
+Back in the Azure portal, you can now get the IP address for our storedog frontend. Note that it's just an IP for now as we're testing, but we can add a DNS record for these when required. 
+
+![storedog IP in Azure Portal](storefog_ip.png)
+
+### Check out Storedog
+Storedog, our microservices app, launched in AKS, is now reachable via the IP we grabbed above. We'll check it out for now, but we'll use this in our next section within Datadog. 
+
+# END HERE CONTINUE WITH DEMO IN DATADOG
