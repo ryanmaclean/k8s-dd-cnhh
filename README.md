@@ -69,19 +69,25 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 ```
 
-1. Export the _API_ key:
+#### Get Datadog API and APP Keys
+
+##### 1. Export the _API_ key
 
 Get the API from https://app.datadoghq.com/account/settings#api and paste it after the `=` sign in the following example:
-`export DD_API_KEY=KEY_FROM_DATADOG`
+```bash
+export DD_API_KEY=KEY_FROM_DATADOG
+```
 
-2. Export the _APP_ key:
-
-`echo DD_APP_KEY`
+##### 2. Export the _APP_ key
 
 Get the API from https://app.datadoghq.com/account/settings#api scroll to the section after API for the APP keys, and paste it after the `=` sign in the following example:
-`export DD_APP_KEY=KEY_FROM_DATADOG`
+```bash
+export DD_APP_KEY=KEY_FROM_DATADOG
+```
 
-3. Once both have been confirmed, you can then install the agent:
+##### 3. Install the Agent
+Now that we have both exported in our shell, we can proceded to the agent install:
+
 ```bash
 helm install datadogagent \
  --set datadog.apiKey=$DD_API_KEY \
