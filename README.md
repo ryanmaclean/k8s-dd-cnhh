@@ -6,7 +6,7 @@ Some useful commands as we run through the hands-on portion:
 
 ### For those in Azure Cloud Shell
 
-Helm chart link: dtdg.co/ddhelm
+![Helm chart link - dtdg.co/ddhelm](http://dtdg.co/ddhelm)
 
 Make a directory to hold our content (it's used below!):
 `mkdir -p k8s-yaml-files`
@@ -46,10 +46,11 @@ helm install datadogagent \
  -f k8s-yaml-files/values.yaml datadog/datadog
  ```
  
-Things should now be appearing in Datadog, but we'll also want to ensure that we get the kubernetes metrics as well. To do so, open the values.yaml file we used previously, and around line 190, uncomment `env` and add the following on the lnext lines:
+Things should now be appearing in Datadog, but we'll also want to ensure that we get the kubernetes metrics as well. To do so, open the values.yaml file we used previously, and around line 276, remove the `[]` after the `env` line, and add the following the following text:
 ```yaml
- - name: DD_KUBELET_TLS_VERIFY
-   value: "false"
+  env:
+    - name: "DD_KUBELET_TLS_VERIFY"
+      value: "false"
 ```
 
 Then we'll re-apply our helm chart in order to update it: 
