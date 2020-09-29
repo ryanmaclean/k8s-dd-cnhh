@@ -3,10 +3,51 @@
 Some useful commands as we run through the hands-on portion.
 
 ## Azure Integration Steps
+Note that these won't be required if using the Azure Marketplace in the future, but for today's session we'll go through the old process.
+Further, the Subscription you deploy the read-only Service Principal to should also be the one that contains your AKS cluster, as we'll be using that data later on!
+
+### Get Tenant ID
+This command will help you get your tenant ID, though the creation step should as well. 
+
+```bash
+az account show --output json | jq -r .tenantId
+```
 
 ### Set Up Service Principal
+In order to set up a service principal, as per the Datadog docs, you'll first need to select the subscription you want:
+
+```bash
+az account list --output table
+```
+
+This outputs your subscriptions as a table, so that you can copy the subscription ID that you need for the next step. Again, make sure this is the subscription your AKS cluster lives in! 
+
+>> Note: If you've only got one subscription and tenant, or if the defaults for both are ok, there's a full example at the end. 
+
+Then add a read-only service principal to that subscription (*replace YOUR_SUBSCRIPTION_ID*), making sure to note the credentials for use with Datadog
+
+```bash
+az ad sp create-for-rbac --role "Monitoring Reader" --scopes /subscriptions/YOUR_SUBSCRIPTION_ID
+```
+
+#### Full Example
+Use this only if you've got one tenant, one subscription, or if the defaults are OK!
+
+```bash
+az ad sp create-for-rbac --role "Monitoring Reader" --scopes /subscriptions/$(az account list --output json | jq -r .[0].id)
+```
+
+This outputs your AppID (Client ID), password (Client Secret) and tenant - you'll need all three over in Datadog, so put them somewhere temporarily in case the Azure Shell session expires. 
 
 ### Add Service Principal to Datadog
+
+In Datadog, navigate to the [Azure Integration page](https://app.datadoghq.com/account/settings#integrations/azure), and click the configuration tab, as shown in the following image:
+
+![Datadog Azure Integration](azure_datadog.png)
+
+Enter the Tenant, AppID (Client ID) and Password (Client Secret) you got as output from the previous steps in Azure Cloud Shell. 
+
+You've now set up Datadog to get Azure data flowing into Datadog for that subscription! If you have more than one, feel free to do this for the rest, but for the purpose of our session, we'll be using the one that contains the AKS cluster that already exists. 
 
 ## For Azure Cloud Shell
 
