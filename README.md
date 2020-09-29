@@ -101,9 +101,32 @@ helm upgrade datadogagent \
  -f k8s-yaml-files/values.yaml datadog/datadog
 ```
 
+### Cluster Agent
+We'll now deploy the cluster agent - in the values.yaml file, the block around line 390 contains the cluster agent config. Change the `false` on line 397 to `true`, then save and upgrade the cluster once more. (Last time, I promise!) Hint: you can use `code k8s-yaml-files/values.yaml` to open it in the embedded VS Code editor, just remember to hit cmd+s (on macOS) or ctrl+s (Linux/Windows) to save the file before continuing. 
+
+It should look like this when you're done:
+
+```yaml
+clusterAgent:
+  ## @param enabled - boolean - required
+  ## Set this to true to enable Datadog Cluster Agent
+  #
+  enabled: true
+```
+
+Once it's saved, we'll run the familiar upgrade command via helm:
+
+```bash
+helm upgrade datadogagent \
+ --set datadog.apiKey=$DD_API_KEY \
+ --set datadog.appKey=$DD_APP_KEY \
+ -f k8s-yaml-files/values.yaml datadog/datadog
+```
+
 ### Exploring Kubernetes in Datadog
 
 Note that though we now have data in Datadog, we also need to configure the integration. This can be done via the integrations page, specifically in the Kubernetes integration tab: https://app.datadoghq.com/account/settings#integrations/kubernetes
 
 In the "configuration" tab, click "Install Integration" (as pictured below) - we've done the heavy lifting already. 
 ![Datadog Kubernetes Integration](install_k8s_integration.png)
+
