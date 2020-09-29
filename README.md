@@ -34,7 +34,9 @@ az ad sp create-for-rbac --role "Monitoring Reader" --scopes /subscriptions/YOUR
 Use this only if you've got one tenant, one subscription, or if the defaults are OK!
 
 ```bash
-az ad sp create-for-rbac --role "Monitoring Reader" --scopes /subscriptions/$(az account list --output json | jq -r .[0].id)
+az ad sp create-for-rbac \
+ --role "Monitoring Reader" \
+ --scopes /subscriptions/$(az account list --output json | jq -r .[0].id)
 ```
 
 This outputs your AppID (Client ID), password (Client Secret) and tenant - you'll need all three over in Datadog, so put them somewhere temporarily in case the Azure Shell session expires. 
