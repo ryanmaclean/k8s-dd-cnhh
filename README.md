@@ -3,7 +3,7 @@
 Some useful commands as we run through the hands-on portion.
 
 ## Azure Integration Steps
-Note that these won't be required if using the Azure Marketplace in the future, but for today's session we'll go through the old process.
+Note that these won't be required if using the new sign-up in the future, but for today's session we'll go through the old process.
 Further, the Subscription you deploy the read-only Service Principal to should also be the one that contains your AKS cluster, as we'll be using that data later on!
 
 ### Get Tenant ID
@@ -14,7 +14,7 @@ az account show --output json | jq -r .tenantId
 ```
 
 ### Set Up Service Principal
-In order to set up a service principal, as per the Datadog docs, you'll first need to select the subscription you want:
+In order to set up a service principal, as per [the Datadog docs for the Azure integration](https://docs.datadoghq.com/integrations/azure/?tab=azurecliv20#integrating-through-the-azure-cli), you'll first need to select the subscription you want:
 
 ```bash
 az account list --output table
