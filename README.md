@@ -22,7 +22,7 @@ az account list --output table
 
 This outputs your subscriptions as a table, so that you can copy the subscription ID that you need for the next step. Again, make sure this is the subscription your AKS cluster lives in! 
 
->> Note: If you've only got one subscription and tenant, or if the defaults for both are ok, there's a full example at the end. 
+> Note: If you've only got one subscription and tenant, or if the defaults for both are ok, there's a full example at the end. 
 
 Then add a read-only service principal to that subscription (*replace YOUR_SUBSCRIPTION_ID*), making sure to note the credentials for use with Datadog
 
