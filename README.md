@@ -8,34 +8,30 @@ Some useful commands as we run through the hands-on portion:
 
 [Helm chart link - dtdg.co/ddhelm](http://dtdg.co/ddhelm)
 
-Make a directory to hold our content (it's used below!):
-`mkdir -p k8s-yaml-files`
+Clone this repo, the move to that folder:
 
-Add the repository:
+```bash
+git clone https://github.com/ryanmaclean/k8s-dd-cnhh.git
+cd k8s-dd-cnhh
+```
+
+Add the helm repository:
 ```bash
 helm repo add datadog https://helm.datadoghq.com
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 ```
 
-Download a copy of the values.yaml:
-```bash
-wget https://raw.githubusercontent.com/helm/charts/master/stable/datadog/values.yaml
-mv values.yaml k8s-yaml-files/
-```
-
 1. Export the _API_ key:
 
-`echo $DD_API_KEY`
-
-If blank (Azure cloud shell or what-have-you), get the API from https://app.datadoghq.com/account/settings#api scroll to the section after API for the APP keys, and paste it after the `=` sign in the following example:
+Get the API from https://app.datadoghq.com/account/settings#api and paste it after the `=` sign in the following example:
 `export DD_API_KEY=KEY_FROM_DATADOG`
 
 2. Export the _APP_ key:
 
 `echo DD_APP_KEY`
 
-If blank (Azure cloud shell or what-have-you), get the API from https://app.datadoghq.com/account/settings#api, and paste it after the `=` sign in the following example:
+Get the API from https://app.datadoghq.com/account/settings#api scroll to the section after API for the APP keys, and paste it after the `=` sign in the following example:
 `export DD_APP_KEY=KEY_FROM_DATADOG`
 
 3. Once both have been confirmed, you can then install the agent:
@@ -60,6 +56,7 @@ helm upgrade datadogagent \
  --set datadog.appKey=$DD_APP_KEY \
  -f k8s-yaml-files/values.yaml datadog/datadog
 ```
+
 We should now see the some of the infrastructure start to come online in Datadog. Note that it may take a couple of minutes, but will eventually look like the following: 
 
 ![Datadog Event Stream](aks_in_event_stream.png)
@@ -134,7 +131,7 @@ In the "configuration" tab, click "Install Integration" (as pictured below) - we
 ## Deploy Storedog
 We've created a sample app to allow us to look at other Datadog services. 
 
-The manifests for this application can be found in the ![manifests](manifests/) subfolder. 
+The manifests for this application can be found in the [storedog](storedog/) subfolder. 
 
 In order to launch all of the microservices at once, the following command will apply all of the yaml files in that folder:
 
